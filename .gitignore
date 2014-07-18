@@ -15,3 +15,5 @@ presentation.pdf
 .Rhistory
 *.mp4
 *.avi
+*.csv
+*.zip

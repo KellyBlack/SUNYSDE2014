@@ -17,7 +17,8 @@
 #include <time.h>
 
 #define OUTPUT_FILE "./shrimpPopMulNoiseFULL.csv"
-#define NUMBER_THREADS 4
+#define NUMBER_THREADS 8
+//#define MULTIPLICATIVE_NOISE
 //#define DEBUG
 
 
@@ -109,12 +110,19 @@ void singleApprox(double x0, double y0,
         
 					normalDistRand(stdDev,dw);
         
+#ifdef MULTIPLICATIVE_NOISE
 					x[0] += f1(xinter[0], xinter[1], alpha, gamma, D)*dt +
 						upsilon*xinter[0]*dw[0] +
 						upsilon*upsilon*xinter[0]*0.5*(dw[0]*dw[0]-dt);
 					x[1] += f2(xinter[0], xinter[1], beta, rho, delta, R)*dt +
 						kappa*xinter[1]*dw[1] +
 						kappa*kappa*xinter[1]*0.5*(dw[1]*dw[1]-dt);
+#else
+					x[0] += f1(xinter[0], xinter[1], alpha, gamma, D)*dt +
+						upsilon*dw[0];
+					x[1] += f2(xinter[0], xinter[1], beta, rho, delta, R)*dt +
+						kappa*dw[1];
+#endif
 
 					if (x[0]< 0.0) x[0] = 0.0;
 					if (x[1]< 0.0) x[1] = 0.0;

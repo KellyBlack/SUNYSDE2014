@@ -3,7 +3,7 @@
 
 import csv
 
-fp = open("shrimpPopMulNoiseFULL.csv",'r')
+fp = open("shrimpPopAddNoiseFULL.csv",'r')
 rowReader = csv.reader(fp,delimiter=',')
 xsum = 0.0
 ysum = 0.0
@@ -27,7 +27,7 @@ for row in rowReader:
 fp.close()
 
 
-fp = open("mulNoiseResults.csv",'w')
+fp = open("addNoiseResults.csv",'w')
 fp.write("sx,sx2,sy,sy2,gamma,delta\n")
 for key, value in sums.iteritems():
 	fp.write("{0},{1},{2},{3},{4}\n".format(value[0],value[1],value[2],value[3],key))
