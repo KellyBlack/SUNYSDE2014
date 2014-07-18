@@ -1,8 +1,8 @@
 clear all
 
-delta=.8; gamma=.5; rho=1; R=3; D=7; alpha=.5; beta=.5; upsilon=.1; kappa=.12;
-xzero = .7;
-yzero = .2;
+delta=.8; gamma=.5; rho=1; R=3; D=7; alpha=.1; beta=.11; upsilon=.05; kappa=.06;
+xzero = .2;
+yzero = .8;
 
 s=10000;
 i=1;
